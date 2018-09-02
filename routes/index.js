@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
+const passport = require("passport");
+const ensureLogin = require("connect-ensure-login");
 const UserModel = require("../models/UserModel");
 const ArticleModel = require("../models/ArticleModel");
 
@@ -10,18 +12,28 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("mylist", { user: req.user });
+});
+
 //LOGIN
 
 /* GET to ARRIVE at the LOGIN page */
 router.get("/login", (req, res, next) => {
-  res.render("login");
+  res.render("login", { message: req.flash("error") });
 });
 
 //POST to SUBMIT once at the LOGIN page
 
-router.post("/login", (req, res, next) => {
-  res.redirect("/mylist");
-});
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/mylist",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
 //SIGNUP
 /* GET to ARRIVE at the SIGNUP page */
@@ -99,8 +111,9 @@ router.post("/signup", (req, res, next) => {
 });
 
 //LOGOUT
-router.get("/logout", (req, res, next) => {
-  res.render("index");
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/login");
 });
 
 //MyList

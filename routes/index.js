@@ -7,6 +7,11 @@ router.get("/", (req, res, next) => {
 });
 
 //LOGIN
+
+//BCrypt to encrypt passwords
+const bcrypt = require("bcrypt");
+const bcryptSalt = 10; //means number of times to shuffle the deck of cards
+
 router.get("/login", (req, res, next) => {
   res.render("login");
 });

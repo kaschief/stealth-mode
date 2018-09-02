@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const bcryptSalt = 10;
+const UserModel = require("../models/UserModel");
+const ArticleModel = require("../models/ArticleModel");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -8,26 +12,90 @@ router.get("/", (req, res, next) => {
 
 //LOGIN
 
-//BCrypt to encrypt passwords
-const bcrypt = require("bcrypt");
-const bcryptSalt = 10; //means number of times to shuffle the deck of cards
-
+/* GET to ARRIVE at the LOGIN page */
 router.get("/login", (req, res, next) => {
   res.render("login");
 });
+
+//POST to SUBMIT once at the LOGIN page
 
 router.post("/login", (req, res, next) => {
   res.redirect("/mylist");
 });
 
 //SIGNUP
+/* GET to ARRIVE at the SIGNUP page */
 
 router.get("/signup", (req, res, next) => {
   res.render("signup");
 });
 
+//POST to SUBMIT once at the SIGNUP page
+
 router.post("/signup", (req, res, next) => {
-  res.redirect("/mylist");
+  //captures name, email and password from body
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  //applies encryption (using salt method) to password - standard, don't change
+
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(password, salt);
+
+  //finally creates new user and add to Model/databse
+  //use Model.create()
+
+  //create new user object with entered name, email and encrypted password
+  const newUserObject = {
+    name: name,
+    email: email,
+    password: hashPass
+  };
+
+  // if name, email or password is blank, then render error
+  if (
+    // !name ||
+    // !email ||
+    // !password ||
+    // name === null ||
+    // email === null ||
+    // password === null ||
+    name === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    res.render("signup", {
+      errorMessage: "Please enter name, email and a password for signup"
+    });
+  }
+  // search if email already exists, else render error
+
+  UserModel.findOne({ email: email })
+    .then(user => {
+      if (user !== null) {
+        res.render("signup", {
+          errorMessage: "The email already exists"
+        });
+        return;
+      }
+
+      // if email does not exist, create new Model
+      UserModel.create(newUserObject)
+        .then(createdUser => {
+          console.log(createdUser, "User was successfully created");
+          res.redirect("/mylist");
+        })
+        .catch(err => {
+          console.log(
+            err,
+            "User could not be created because this email already exists"
+          );
+        });
+    })
+    .catch(err => {
+      console.log(err, "All fields are required.");
+    });
 });
 
 //LOGOUT

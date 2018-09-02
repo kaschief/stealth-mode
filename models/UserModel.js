@@ -14,7 +14,11 @@ const UserSchema = new Schema({
       "Please fill a valid email address"
     ]
   },
-  password: { type: String, required: true, minlength: 8 }
+  password: {
+    type: String,
+    required: true,
+    minlength: 8 //does not work
+  }
   //favorites: [{ type: ObjectId, ref: "ArticleModel" }]
 });
 

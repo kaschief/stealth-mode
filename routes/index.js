@@ -1,40 +1,55 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-    res.render('index');
+router.get("/", (req, res, next) => {
+  res.render("index");
 });
 
-// GET SIGNUP, Logout and LOGIN Pages
-router.get('/login', (req, res, next) => {
-    res.render('login');
+//LOGIN
+router.get("/login", (req, res, next) => {
+  res.render("login");
 });
 
-router.get('/signup', (req, res, next) => {
-    res.render('signup');
+router.post("/login", (req, res, next) => {
+  res.redirect("/mylist");
 });
 
-router.get('/logout', (req, res, next) => {
-    res.render('logout');
+//SIGNUP
+
+router.get("/signup", (req, res, next) => {
+  res.render("signup");
 });
 
-//GET MyList and Favourites, Careers and About
-
-router.get('/mylist', (req, res, next) => {
-    res.render('mylist');
+router.post("/signup", (req, res, next) => {
+  res.redirect("/mylist");
 });
 
-router.get('/favorites', (req, res, next) => {
-    res.render('favorites');
+//LOGOUT
+router.get("/logout", (req, res, next) => {
+  res.render("index");
 });
 
-router.get('/about', (req, res, next) => {
-    res.render('about');
+//MyList
+
+router.get("/mylist", (req, res, next) => {
+  res.render("mylist");
 });
 
-router.get('/careers', (req, res, next) => {
-    res.render('careers');
+//FAVORITES
+router.get("/favorites", (req, res, next) => {
+  res.render("favorites");
+});
+
+//ABOUT
+router.get("/about", (req, res, next) => {
+  res.render("about");
+});
+
+//CAREERS
+
+router.get("/careers", (req, res, next) => {
+  res.render("careers");
 });
 
 module.exports = router;

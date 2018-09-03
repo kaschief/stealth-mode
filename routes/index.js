@@ -117,13 +117,15 @@ router.get("/logout", (req, res) => {
 router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
   //check user's ID
   let userID = req.user.id;
-  console.log(userID);
 
   //display all articles
-  Article.find()
+  Article.find({ _owner: userID })
     .then(articles => {
-      let articleID = articles._id;
-      console.log(articles, userID), articleID;
+      console.log(
+        articles,
+        "This is the CURRENT LOGGED IN USER ----------",
+        userID
+      );
       res.render("mylist", { user: req.user, articles });
     })
     .catch();
@@ -132,8 +134,28 @@ router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
 //SAVE ARTICLE SECTION
 
 router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
-  //take from the form
-  res.render("mylist", { user: req.user });
+  //take data from the form
+
+  console.log(req.body);
+  res.redirect("/mylist");
+  // let newArticleObject = {
+  //   url:
+  //     "https://www.theatlantic.com/politics/archive/2018/09/barack-obama-eulogy-john-mccain/569065/?utm_content=edit-promo&utm_term=2018-09-01T16%3A20%3A56&utm_campaign=the-atlantic&utm_medium=social&utm_source=twitter",
+  //   title: "Barack Obama's Eulogy for John McCain",
+  //   image:
+  //     "https://cdn.theatlantic.com/assets/media/img/mt/2018/09/AP_18244565759833/lead_720_405.jpg?mod=1535818855",
+  //   _owner: "5b8d2ea2ebebdc07fd83ab90",
+  //   isFavorite: false
+  // };
+
+  // Article.create(newArticleObject)
+  //   .then(article => {
+  //     console.log(article, "NEW article successfully created");
+  //     res.render("mylist", { user: req.user });
+  //   })
+  //   .catch(err => {
+  //     console.log(err, "Sorry, NEW article was not created!");
+  //   });
 });
 
 //FAVORITES SECTION

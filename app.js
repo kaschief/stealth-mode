@@ -12,7 +12,7 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const UserModel = require("./models/UserModel");
+const User = require("./models/User");
 const flash = require("connect-flash");
 const app = express();
 
@@ -58,7 +58,7 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser((id, cb) => {
-  UserModel.findById(id, (err, user) => {
+  User.findById(id, (err, user) => {
     if (err) {
       return cb(err);
     }
@@ -74,15 +74,17 @@ passport.use(
       usernameField: "email"
     },
     (email, password, next) => {
-      UserModel.findOne({ email }, (err, user) => {
+      User.findOne({ email }, (err, user) => {
         if (err) {
           return next(err);
         }
         if (!user) {
-          return next(null, false, { message: "Incorrect email address" });
+          return next(null, false, {
+            message: "Sorry, the email address was incorrect"
+          });
         }
         if (!bcrypt.compareSync(password, user.password)) {
-          return next(null, false, { message: "Incorrect password" });
+          return next(null, false, { message: "The password was incorrect" });
         }
 
         return next(null, user);

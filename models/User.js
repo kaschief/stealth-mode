@@ -21,6 +21,6 @@ const UserSchema = new Schema({
   //favorites: [{ type: ObjectId, ref: "ArticleModel" }]
 });
 
-const UserModel = mongoose.model("UserModel", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = UserModel;
+module.exports = User;

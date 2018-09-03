@@ -115,7 +115,18 @@ router.get("/logout", (req, res) => {
 //MYLIST SECTION
 
 router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("mylist", { user: req.user });
+  //check user's ID
+  let userID = req.user.id;
+  console.log(userID);
+
+  //display all articles
+  Article.find()
+    .then(articles => {
+      let articleID = articles._id;
+      console.log(articles, userID), articleID;
+      res.render("mylist", { user: req.user, articles });
+    })
+    .catch();
 });
 
 //SAVE ARTICLE SECTION

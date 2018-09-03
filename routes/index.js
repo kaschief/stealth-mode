@@ -117,13 +117,15 @@ router.get("/logout", (req, res) => {
 router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
   //check user's ID
   let userID = req.user.id;
-  console.log(userID);
 
   //display all articles
-  Article.find()
+  Article.find({ _owner: userID })
     .then(articles => {
-      let articleID = articles._id;
-      console.log(articles, userID), articleID;
+      console.log(
+        articles
+        // "This is the CURRENT LOGGED IN USER ----------",
+        // userID
+      );
       res.render("mylist", { user: req.user, articles });
     })
     .catch();
@@ -132,8 +134,54 @@ router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
 //SAVE ARTICLE SECTION
 
 router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
-  //take from the form
-  res.render("mylist", { user: req.user });
+  const url = req.body.url;
+  const userID = req.user.id;
+
+  //get title from URL - casper?
+  //get image from URL - casper?
+
+  // create object for new article
+  // let newArticleObject = {
+  //   url: enteredURL,
+  //   title: "Barack Obama's Eulogy for John McCain",
+  //   image:
+  //     "https://cdn.theatlantic.com/assets/media/img/mt/2018/09/AP_18244565759833/lead_720_405.jpg?mod=1535818855",
+  //   _owner: userID,
+  //   isFavorite: false
+  // };
+
+  // Article.create(newArticleObject)
+  //   .then(article => {
+  //     console.log(article, "NEW article successfully created");
+  //     res.render("mylist", { user: req.user });
+  //   })
+  //   .catch(err => {
+  //     console.log(err, "Sorry, NEW article was not created!");
+  //   });
+
+  // //function to validate URL
+
+  // let validURL = function(url) {
+  //   var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  //   if (!regex.test(url)) {
+  //     console.log("Please enter valid URL");
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // };
+
+  // //validate URL
+  // let enteredURL = validURL(req.body.url);
+
+  // if (enteredURL === false) {
+  //   res.render("mylist", {
+  //     user: req.user,
+  //     errorMessage: "Please enter a valid URL"
+  //   });
+  //   return;
+  // }
+  res.redirect("mylist");
 });
 
 //FAVORITES SECTION

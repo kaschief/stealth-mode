@@ -16,8 +16,7 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 8 //does not work
+    required: true
   }
   //favorites: [{ type: ObjectId, ref: "ArticleModel" }]
 });

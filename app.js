@@ -68,21 +68,26 @@ passport.deserializeUser((id, cb) => {
 app.use(flash());
 
 passport.use(
-  new LocalStrategy((email, password, next) => {
-    UserModel.findOne({ email }, (err, user) => {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return next(null, false, { message: "Incorrect email address" });
-      }
-      if (!bcrypt.compareSync(password, user.password)) {
-        return next(null, false, { message: "Incorrect password" });
-      }
+  new LocalStrategy(
+    {
+      usernameField: "email"
+    },
+    (email, password, next) => {
+      UserModel.findOne({ email }, (err, user) => {
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return next(null, false, { message: "Incorrect email address" });
+        }
+        if (!bcrypt.compareSync(password, user.password)) {
+          return next(null, false, { message: "Incorrect password" });
+        }
 
-      return next(null, user);
-    });
-  })
+        return next(null, user);
+      });
+    }
+  )
 );
 
 // Initialize Sessions

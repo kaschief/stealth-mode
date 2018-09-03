@@ -16,7 +16,7 @@ router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("mylist", { user: req.user });
 });
 
-//LOGIN
+//LOGIN SECTION
 
 /* GET to ARRIVE at the LOGIN page */
 router.get("/login", (req, res, next) => {
@@ -35,7 +35,7 @@ router.post(
   })
 );
 
-//SIGNUP
+//SIGNUP SECTION
 /* GET to ARRIVE at the SIGNUP page */
 
 router.get("/signup", (req, res, next) => {
@@ -49,6 +49,14 @@ router.post("/signup", (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+
+  //check is password length is greater than 8
+  if (password.length < 8) {
+    res.render("signup", {
+      errorMessage: "Please create a password with 8 or more characters"
+    });
+    return;
+  }
 
   //applies encryption (using salt method) to password - standard, don't change
 
@@ -110,7 +118,7 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-//LOGOUT
+//LOGOUT SECTION
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");

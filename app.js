@@ -14,6 +14,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const UserModel = require("./models/UserModel");
 const flash = require("connect-flash");
+const app = express();
 
 mongoose
   .connect(
@@ -34,8 +35,6 @@ const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
 );
 
-const app = express();
-
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -50,6 +49,8 @@ app.use(
     saveUninitialized: true
   })
 );
+
+// app.use(session({cookie: { maxAge: 60000 }}));
 
 //Serialize Sessions
 passport.serializeUser((user, cb) => {

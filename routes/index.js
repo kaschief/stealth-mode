@@ -31,7 +31,8 @@ router.post(
     successRedirect: "/mylist",
     failureRedirect: "/login",
     failureFlash: true,
-    passReqToCallback: true
+    passReqToCallback: true,
+    badRequestMessage: "Your message you want to change."
   })
 );
 
@@ -126,9 +127,9 @@ router.get("/logout", (req, res) => {
 
 //MyList
 
-router.get("/mylist", (req, res, next) => {
-  res.render("mylist");
-});
+// router.get("/mylist", (req, res, next) => {
+//   res.render("mylist");
+// });
 
 //FAVORITES
 router.get("/favorites", (req, res, next) => {

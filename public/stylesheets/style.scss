@@ -1,8 +1,124 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+    background-image: url('../images/hitoshi-suzuki-497082-unsplash.jpg');
+    background-size: cover;
 }
 
+.main {
+    width: 100vw;
+    height: 75vh;
+    position: flex;
+}
+
+.logo {
+    background-image: url('../images/K\ lipr.png');
+    position: fixed;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100px;
+}
+
+#navigation {
+    height: 60px;
+    background-color: black;
+    position: fixed;
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: right;
+    opacity: 0.8;
+}
+
+// #navigation .ul {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     justify-content: right;
+// }
+
 a {
-  color: #00B7FF;
+    color: white;
+}
+
+.headline {
+    color: black;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 100px;
+    font-size: 30px;
+    display: flex;
+}
+
+p {
+    background-color: aliceblue;
+    width: 50vw;
+    align-content: center;
+    border-radius: 15px;
+}
+
+.startform {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    padding-top: 150px;
+}
+
+.signup-button {
+    border-radius: 15px;
+    width: 15vw;
+    height: 7vh;
+}
+
+.login-button {
+    border-radius: 15px;
+    width: 15vw;
+    height: 7vh;
+}
+
+.form-group {
+    width: 30vw;
+    padding-top: 100px;
+    margin-left: 50px;
+    color: white;
+}
+
+.form-group.signup {
+    width: 45vw;
+    padding-top: 50px;
+    margin-left: 50px;
+    color: white;
+}
+
+.btn-primary {
+    margin-left: 50px;
+    background-color: white;
+    color: black;
+    border: 0;
+}
+.form-group .small {
+    color: white;
+}
+
+.persons {
+    width: 20vw;
+    height: 20vw;
+    background-image: url('../images/IMG_20180903_125038.jpg');
+    background-size: cover;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.about {
+    width: 100vw;
+    height: 75vh;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 100px;
 }

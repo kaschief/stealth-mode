@@ -17,13 +17,13 @@ const Article = mongoose.model("Article", ArticleSchema);
 
 //define URL validator
 
-function validURL(url) {
-  var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-  if (!regex.test(url)) {
-    console.log("Please enter valid URL");
-    return false;
-  } else {
-    return true;
-  }
-}
+// function validURL(url) {
+//   var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+//   if (!regex.test(url)) {
+//     console.log("Please enter valid URL");
+//     return false;
+//   } else {
+//     return true;
+//   }
+// }
 module.exports = Article;

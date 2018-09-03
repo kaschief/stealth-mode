@@ -1,8 +1,66 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  background-image: url("../images/hitoshi-suzuki-497082-unsplash.jpg");
+  background-size: cover; }
+
+.main-signup {
+  display: flex;
+  justify-content: center;
+  padding: 150px; }
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
+
+.btn {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  width: 10vw;
+  margin: 200px; }
+
+.form-group-login {
+  width: 30vw;
+  margin-top: 150px;
+  margin-left: 50px; }
+
+.button-login {
+  width: 20vw;
+  border: 0;
+  margin: 50px;
+  border-radius: 15px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 5vh; }
+
+.form-group-signup {
+  width: 30vw;
+  margin-top: 100px;
+  margin-left: 50px; }
+
+.person {
+  width: 20vw;
+  height: 30vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 100px; }
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30vh; }
+
+.career {
+  width: 30vw;
+  height: 45vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 150px; }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  height: 3vh; }
 
 /*# sourceMappingURL=style.css.map */

@@ -12,10 +12,6 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("mylist", { user: req.user });
-});
-
 //LOGIN SECTION
 
 /* GET to ARRIVE at the LOGIN page */
@@ -52,17 +48,7 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
 
   // if name, email or password is blank, then render error
-  if (
-    // !name ||
-    // !email ||
-    // !password ||
-    // name === null ||
-    // email === null ||
-    // password === null ||
-    name === "" ||
-    email === "" ||
-    password === ""
-  ) {
+  if (name === "" || email === "" || password === "") {
     res.render("signup", {
       errorMessage: "Please enter name, email and a password for signup"
     });
@@ -126,23 +112,30 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-//MyList
+//MYLIST SECTION
 
-// router.get("/mylist", (req, res, next) => {
-//   res.render("mylist");
-// });
+router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("mylist", { user: req.user });
+});
 
-//FAVORITES
+//SAVE ARTICLE SECTION
+
+router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
+  //take from the form
+  res.render("mylist", { user: req.user });
+});
+
+//FAVORITES SECTION
 router.get("/favorites", (req, res, next) => {
   res.render("favorites");
 });
 
-//ABOUT
+//ABOUT SECTION
 router.get("/about", (req, res, next) => {
   res.render("about");
 });
 
-//CAREERS
+//CAREERS SECTION
 
 router.get("/careers", (req, res, next) => {
   res.render("careers");

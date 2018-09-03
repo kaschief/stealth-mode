@@ -79,10 +79,12 @@ passport.use(
           return next(err);
         }
         if (!user) {
-          return next(null, false, { message: "Incorrect email address" });
+          return next(null, false, {
+            message: "Sorry, the email address was incorrect"
+          });
         }
         if (!bcrypt.compareSync(password, user.password)) {
-          return next(null, false, { message: "Incorrect password" });
+          return next(null, false, { message: "The password was incorrect" });
         }
 
         return next(null, user);

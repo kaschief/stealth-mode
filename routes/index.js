@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
-const UserModel = require("../models/UserModel");
-const ArticleModel = require("../models/ArticleModel");
+const User = require("../models/User");
+const Article = require("../models/Article");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -51,6 +51,23 @@ router.post("/signup", (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  // if name, email or password is blank, then render error
+  if (
+    // !name ||
+    // !email ||
+    // !password ||
+    // name === null ||
+    // email === null ||
+    // password === null ||
+    name === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    res.render("signup", {
+      errorMessage: "Please enter name, email and a password for signup"
+    });
+  }
+
   //check is password length is greater than 8
   if (password.length < 8) {
     res.render("signup", {
@@ -74,25 +91,9 @@ router.post("/signup", (req, res, next) => {
     password: hashPass
   };
 
-  // if name, email or password is blank, then render error
-  if (
-    // !name ||
-    // !email ||
-    // !password ||
-    // name === null ||
-    // email === null ||
-    // password === null ||
-    name === "" ||
-    email === "" ||
-    password === ""
-  ) {
-    res.render("signup", {
-      errorMessage: "Please enter name, email and a password for signup"
-    });
-  }
   // search if email already exists, else render error
 
-  UserModel.findOne({ email: email })
+  User.findOne({ email: email })
     .then(user => {
       if (user !== null) {
         res.render("signup", {
@@ -102,7 +103,7 @@ router.post("/signup", (req, res, next) => {
       }
 
       // if email does not exist, create new Model
-      UserModel.create(newUserObject)
+      User.create(newUserObject)
         .then(createdUser => {
           console.log(createdUser, "User was successfully created");
           res.redirect("/mylist");

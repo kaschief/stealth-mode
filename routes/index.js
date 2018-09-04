@@ -6,6 +6,8 @@ const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/User");
 const Article = require("../models/Article");
+const Nightmare = require("nightmare");
+const nightmare = Nightmare();
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -137,27 +139,57 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
   const url = req.body.url;
   const userID = req.user.id;
 
+  Article.create({
+    url: url,
+    title: "WE ARE FETCHING THE TITLE",
+    image: "...",
+    _owner: userID
+  }).then(articleCreated => {
+    res.redirect("/mylist");
+
+    nightmare
+      .goto(url)
+      .wait(2000)
+      .evaluate(() => {
+        console.log("evaluate");
+
+        let title = document.querySelector("h1").innerText;
+
+        let bigImg = [...document.getElementsByTagName("img")].find(
+          i => i.height >= 100 && i.width >= 100
+        );
+        let src = bigImg ? bigImg.src : "DEFAULT";
+
+        let bigP = [...document.getElementsByTagName("p")].find(
+          p => p.innerText.length >= 100
+        );
+        let description = bigP ? bigP.innerText : "DEFAULT DESCRIPTION";
+
+        return [title, src, description];
+      })
+      .end()
+      .then(([title, src, description]) => {
+        console.log("title----------------", title);
+        console.log("src--------------", src);
+        console.log("description--------------", description);
+
+        //pass object into dabatase using Model.create()
+        Article.findByIdAndUpdate(articleCreated._id, {
+          title: title,
+          image: src
+        })
+          .then(article => {
+            console.log(article, "article successfully updated");
+            // res.redirect("/mylist");
+          })
+          .catch(err => {
+            console.log(err, "Sorry, article was not updated!");
+          });
+      });
+  });
+
   //get title from URL - casper?
   //get image from URL - casper?
-
-  // create object for new article
-  // let newArticleObject = {
-  //   url: enteredURL,
-  //   title: "Barack Obama's Eulogy for John McCain",
-  //   image:
-  //     "https://cdn.theatlantic.com/assets/media/img/mt/2018/09/AP_18244565759833/lead_720_405.jpg?mod=1535818855",
-  //   _owner: userID,
-  //   isFavorite: false
-  // };
-
-  // Article.create(newArticleObject)
-  //   .then(article => {
-  //     console.log(article, "NEW article successfully created");
-  //     res.render("mylist", { user: req.user });
-  //   })
-  //   .catch(err => {
-  //     console.log(err, "Sorry, NEW article was not created!");
-  //   });
 
   // //function to validate URL
 
@@ -181,7 +213,6 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
   //   });
   //   return;
   // }
-  res.redirect("mylist");
 });
 
 //FAVORITES SECTION

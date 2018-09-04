@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 document.addEventListener(
   "DOMContentLoaded",
   () => {
@@ -28,3 +30,11 @@ document.addEventListener(
 //   });
 //   return;
 // }
+
+axios
+  .get(
+    "https://newsapi.org/v2/top-headlines?country=us&apiKey=3393221cf7ba4f5ab1a873161304c7f3"
+  )
+  .then(response => {
+    console.log(response);
+  });

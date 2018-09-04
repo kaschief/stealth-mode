@@ -134,62 +134,57 @@ router.get('/mylist', ensureLogin.ensureLoggedIn(), (req, res) => {
 
 router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
     const url = req.body.url;
-    const userID = req.user._id;
-    console.log(url);
-    nightmare
-        .goto(url)
+    const userID = req.user.id;
 
-        // .goto('https://medium.com/@neotheicebird/how-to-add-code-snippets-to-medium-cc7ca5c3fbe2')
-        .wait(2000)
-        .evaluate(() => {
-            let title = document.querySelector('h1').innerText;
+    Article.create({
+        url: url,
+        title: 'WE ARE FETCHING THE TITLE',
+        image: '...',
+        _owner: userID
+    }).then(articleCreated => {
+        res.redirect('/mylist');
 
-            let bigImg = [...document.getElementsByTagName('img')].find(
-                i => i.height >= 100 && i.width >= 100
-            );
-            let src = bigImg ? bigImg.src : 'DEFAULT';
+        nightmare
+            .goto(url)
+            .wait(2000)
+            .evaluate(() => {
+                console.log('evaluate');
 
-            return [title, src];
-        })
-        .end()
-        .then(([title, src]) => {
-            // res.json({
-            //     title,
-            //     src
-            // });
-            Article.create({
-                title: title,
-                image: src,
-                url: url,
-                _owner: userID
-            }).then(articleCreated => {
-                res.redirect('/myList');
+                let title = document.querySelector('h1').innerText;
+
+                let bigImg = [...document.getElementsByTagName('img')].find(
+                    i => i.height >= 100 && i.width >= 100
+                );
+                let src = bigImg ? bigImg.src : 'DEFAULT';
+
+                let bigP = [...document.getElementsByTagName('p')].find(p => p.innerText.length >= 100);
+                let description = bigP ? bigP.innerText : 'DEFAULT DESCRIPTION';
+
+                return [title, src, description];
+            })
+            .end()
+            .then(([title, src, description]) => {
+                console.log('title----------------', title);
+                console.log('src--------------', src);
+                console.log('description--------------', description);
+
+                //pass object into dabatase using Model.create()
+                Article.findByIdAndUpdate(articleCreated._id, {
+                    title: title,
+                    image: src
+                })
+                    .then(article => {
+                        console.log(article, 'article successfully updated');
+                        // res.redirect("/mylist");
+                    })
+                    .catch(err => {
+                        console.log(err, 'Sorry, article was not updated!');
+                    });
             });
-
-            // res.redirect('mylist');
-        });
+    });
 
     //get title from URL - casper?
     //get image from URL - casper?
-
-    // create object for new article
-    // let newArticleObject = {
-    //   url: enteredURL,
-    //   title: "Barack Obama's Eulogy for John McCain",
-    //   image:
-    //     "https://cdn.theatlantic.com/assets/media/img/mt/2018/09/AP_18244565759833/lead_720_405.jpg?mod=1535818855",
-    //   _owner: userID,
-    //   isFavorite: false
-    // };
-
-    // Article.create(newArticleObject)
-    //   .then(article => {
-    //     console.log(article, "NEW article successfully created");
-    //     res.render("mylist", { user: req.user });
-    //   })
-    //   .catch(err => {
-    //     console.log(err, "Sorry, NEW article was not created!");
-    //   });
 
     // //function to validate URL
 

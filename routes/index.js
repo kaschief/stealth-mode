@@ -79,6 +79,8 @@ router.post("/signup", (req, res, next) => {
     password: hashPass
   };
 
+  console.log("------------------------------------", newUserObject);
+
   // search if email already exists, else render error
 
   User.findOne({ email: email })
@@ -139,14 +141,18 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
   const url = req.body.url;
   const userID = req.user.id;
 
+  //create new artile with placeholder values
   Article.create({
     url: url,
     title: "WE ARE FETCHING THE TITLE",
     image: "...",
-    _owner: userID
+    _owner: userID,
+    description: "Text of article being created"
   }).then(articleCreated => {
+    //redirect to mylist to make placeholder article visible
     res.redirect("/mylist");
 
+    //call nightmare to access url
     nightmare
       .goto(url)
       .wait(2000)
@@ -156,7 +162,7 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
         let title = document.querySelector("h1").innerText;
 
         let bigImg = [...document.getElementsByTagName("img")].find(
-          i => i.height >= 100 && i.width >= 100
+          i => i.height >= 150 && i.width >= 150
         );
         let src = bigImg ? bigImg.src : "DEFAULT";
 
@@ -176,10 +182,11 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
         //pass object into dabatase using Model.create()
         Article.findByIdAndUpdate(articleCreated._id, {
           title: title,
-          image: src
+          image: src,
+          description: description
         })
           .then(article => {
-            console.log(article, "article successfully updated");
+            console.log(article, "Article successfully updated");
             // res.redirect("/mylist");
           })
           .catch(err => {
@@ -187,9 +194,6 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
           });
       });
   });
-
-  //get title from URL - casper?
-  //get image from URL - casper?
 
   // //function to validate URL
 

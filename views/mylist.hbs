@@ -28,10 +28,8 @@
     <ul>
       {{#each articles}}
       <li>
-        <a href="{{this.url}}"><h4>{{this.title}}</h4></a>
-        <img src="{{this.image}}">
-
-
+        <a href="{{this.url}}"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
+        <p>{{this.description}}</p>
 
       </li>
       {{/each}}

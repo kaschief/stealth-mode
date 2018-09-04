@@ -19,13 +19,13 @@
       <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">      {{!--
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" id="button1" class="btn btn-primary">Submit</button>
   </form>
 
 
   <div>
 
-    <ul>
+    <ul id='tester'>
       {{#each articles}}
       <li>
         <a href="{{this.url}}"><h4>{{this.title}}</h4></a>

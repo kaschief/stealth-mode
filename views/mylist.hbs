@@ -30,7 +30,9 @@
       <li>
         <a href="{{this.url}}"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
         <p>{{this.description}}</p>
-
+        <form action="/mylist/{{this.id}}/delete" method="POST">
+          <button>Delete</button>
+        </form>
       </li>
       {{/each}}
     </ul>

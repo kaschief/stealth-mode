@@ -6,8 +6,8 @@ const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/User");
 const Article = require("../models/Article");
-const Nightmare = require("nightmare");
-const nightmare = Nightmare();
+const request = require("request");
+const cheerio = require("cheerio");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -22,7 +22,6 @@ router.get("/login", (req, res, next) => {
 });
 
 //POST to SUBMIT once at the LOGIN page
-
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -42,7 +41,6 @@ router.get("/signup", (req, res, next) => {
 });
 
 //POST to SUBMIT once at the SIGNUP page
-
 router.post("/signup", (req, res, next) => {
   //captures name, email and password from body
   const name = req.body.name;
@@ -79,8 +77,6 @@ router.post("/signup", (req, res, next) => {
     password: hashPass
   };
 
-  console.log("------------------------------------", newUserObject);
-
   // search if email already exists, else render error
 
   User.findOne({ email: email })
@@ -111,6 +107,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 //LOGOUT SECTION
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
@@ -125,11 +122,6 @@ router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
   //display all articles
   Article.find({ _owner: userID })
     .then(articles => {
-      console.log(
-        articles
-        // "This is the CURRENT LOGGED IN USER ----------",
-        // userID
-      );
       res.render("mylist", { user: req.user, articles });
     })
     .catch();
@@ -141,83 +133,69 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
   const url = req.body.url;
   const userID = req.user.id;
 
-  //create new artile with placeholder values
-  Article.create({
-    url: url,
-    title: "WE ARE FETCHING THE TITLE",
-    image: "...",
-    _owner: userID,
-    description: "Text of article being created"
-  }).then(articleCreated => {
-    //redirect to mylist to make placeholder article visible
-    res.redirect("/mylist");
+  request(url, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const $ = cheerio.load(body);
 
-    //call nightmare to access url
-    nightmare
-      .goto(url)
-      .wait(2000)
-      .evaluate(() => {
-        console.log("evaluate");
+      //find the title in the head, take text, then trim
+      const title = $("head > title").text();
+      // .trim();
 
-        let title = document.querySelector("h1").innerText;
+      //find the first paragraph then take the text
+      const description = $("p")
+        .first()
+        .text();
 
-        let bigImg = [...document.getElementsByTagName("img")].find(
-          i => i.height >= 150 && i.width >= 150
-        );
-        let src = bigImg ? bigImg.src : "DEFAULT";
+      //find a p greater than 100?
+      // $("p").filter(function() {
+      //   return $(this).text().length > 100;
+      // });
 
-        let bigP = [...document.getElementsByTagName("p")].find(
-          p => p.innerText.length >= 100
-        );
-        let description = bigP ? bigP.innerText : "DEFAULT DESCRIPTION";
+      const image = $("img")[0]["attribs"]["src"];
 
-        return [title, src, description];
-      })
-      .end()
-      .then(([title, src, description]) => {
-        console.log("title----------------", title);
-        console.log("src--------------", src);
-        console.log("description--------------", description);
+      // create the newArticle Object
 
-        //pass object into dabatase using Model.create()
-        Article.findByIdAndUpdate(articleCreated._id, {
-          title: title,
-          image: src,
-          description: description
+      const newArticle = {
+        url: url,
+        title: title,
+        image: image,
+        description: description,
+        _owner: userID
+      };
+
+      //console.log("This is the new article Object", newArticle);
+
+      //Create new Article
+
+      Article.create(newArticle)
+        .then(createdArticle => {
+          console.log(createdArticle, "Article successfully created");
+          res.redirect("/mylist");
         })
-          .then(article => {
-            console.log(article, "Article successfully updated");
-            // res.redirect("/mylist");
-          })
-          .catch(err => {
-            console.log(err, "Sorry, article was not updated!");
-          });
-      });
+        .catch(err => {
+          console.log(err, "Sorry, article was not created!");
+        });
+    }
   });
-
-  // //function to validate URL
-
-  // let validURL = function(url) {
-  //   var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-  //   if (!regex.test(url)) {
-  //     console.log("Please enter valid URL");
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // };
-
-  // //validate URL
-  // let enteredURL = validURL(req.body.url);
-
-  // if (enteredURL === false) {
-  //   res.render("mylist", {
-  //     user: req.user,
-  //     errorMessage: "Please enter a valid URL"
-  //   });
-  //   return;
-  // }
 });
+
+//DELETE ARTICLE SECTION
+
+router.post(
+  "/mylist/:id/delete",
+  ensureLogin.ensureLoggedIn(),
+  (req, res, next) => {
+    const id = req.params.id;
+    Article.findByIdAndRemove(id)
+      .then(_ => {
+        console.log("Article was DELETED!");
+        res.redirect("/mylist");
+      })
+      .catch(err => {
+        console.log(err, "Article was NOT deleted.");
+      });
+  }
+);
 
 //FAVORITES SECTION
 router.get("/favorites", (req, res, next) => {

@@ -1,5 +1,4 @@
  {{#if user}}
-
 <div>
   {{!--
   <div class="navbar navbar-dark bg-dark"> --}}
@@ -8,35 +7,27 @@
     <a href="/favorites">Favorites</a>
     <a href="/logout">Logout</a>
   </div>
-
   <h1>My List</h1>
-
   <h5>Save a URL</h5>
-
   <form action="/save" method="POST">
     <div class="form-group">
       <label for="exampleInputURL">URL of Article</label>
       <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">      {{!--
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
     </div>
-    <button type="submit" id="button1" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
-
   <div>
-
-    <ul id='tester'>
+    <ul>
       {{#each articles}}
       <li>
-        <a href="{{this.url}}"><h4>{{this.title}}</h4></a>
-        <img src="{{this.image}}">
-
-
-
+        <a href="{{this.url}}"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
+        <p>{{this.description}}</p>
+        <form action="/mylist/{{this.id}}/delete" method="POST">
+          <button>Delete</button>
+        </form>
       </li>
       {{/each}}
     </ul>
   </div>
-
-
   {{/if}}

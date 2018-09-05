@@ -144,11 +144,19 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
                 .text();
 
             //find a p greater than 100?
-            // $("p").filter(function() {
-            //   return $(this).text().length > 100;
+            // const description = $('p').filter(function() {
+            //     return (
+            //         $(this)
+            //             .first()
+            //             .text().length > 100
+            //     );
             // });
+            // console.log(description);
 
             const image = $('img')[0]['attribs']['src'];
+
+            console.log(`$('img')[0]['attribs']`, $('img')[0]['attribs']);
+            console.log(`$('img')[0]['attribs']`, $('img')[0]['attribs']);
 
             // create the newArticle Object
 

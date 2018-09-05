@@ -1,12 +1,7 @@
 body {
-<<<<<<< HEAD
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("../images/hitoshi-suzuki-497082-unsplash.jpg");
-=======
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   background-image: url("../images/patrick-fore-381200-unsplash.jpg");
->>>>>>> 3e2e3c357e58be21f701b6d535ac49e719b42656
   background-size: cover; }
 
 .index {
@@ -127,7 +122,6 @@ a {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 90px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
@@ -151,7 +145,8 @@ a {
 
 .main-a h1 {
   color: white;
-  margin-left: 180px; }
+  width: 45%;
+  text-align: center; }
 
 .about-p {
   color: white;

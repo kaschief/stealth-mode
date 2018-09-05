@@ -1,13 +1,5 @@
  {{#if user}}
-<div>
-  {{!--
-  <div class="navbar navbar-dark bg-dark"> --}}
-    <a href="/mylist">Home</a>
-    {{!-- <a href="/save">Add An Article</a> --}}
-    <a href="/favorites">Favorites</a>
-    <a href="/logout">Logout</a>
-  </div>
-  <h1>My List</h1>
+<div id="submit-form">
   <h5>Save a URL</h5>
   <form action="/save" method="POST">
     <div class="form-group">
@@ -17,17 +9,18 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  <div>
-    <ul>
-      {{#each articles}}
-      <li>
-        <a href="{{this.url}}"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
-        <p>{{this.description}}</p>
-        <form action="/mylist/{{this.id}}/delete" method="POST">
-          <button>Delete</button>
-        </form>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-  {{/if}}
+</div>
+<div id="mainlist">
+  <ul>
+    {{#each articles}}
+    <li>
+      <a href="{{this.url}}" target="_blank"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
+      <p>{{this.description}}</p>
+      <form action="/mylist/{{this.id}}/delete" method="POST">
+        <button>Delete</button>
+      </form>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}

@@ -1,19 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-image: url('../images/patrick-fore-381200-unsplash.jpg');
-    background-size: cover;
+    background-size: 100vw;
+    background-repeat: no-repeat;
 }
 
 .index {
-    width: 60vw;
+    width: 45vw;
     color: white;
+    margin-left: 3%;
+}
+
+h1 .index {
+    text-align: center;
 }
 .main-signup {
     display: flex;
     justify-content: center;
     padding: 100px;
-    margin-top: 100px;
+    margin-top: 15%;
     flex-direction: column;
 }
 
@@ -25,7 +33,6 @@ body {
 
 a {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .btn btn primary {
     color: white;
@@ -55,13 +62,13 @@ a {
 }
 
 .form-group-login h1 {
-    padding: 30px 0;
+    padding: 20px 0;
     color: white;
     margin-top: 30px;
 }
 
 .form-group-signup h1 {
-    padding: 30px 0;
+    padding: 20px 0;
     color: white;
     margin-top: 30px;
 }
@@ -82,7 +89,6 @@ a {
     justify-content: center;
     width: 50vw;
     flex-wrap: wrap;
-    background-color: white;
 }
 
 .button-login {
@@ -124,7 +130,7 @@ a {
 .career {
     width: 40vw;
     height: 40vh;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50px;
 }
 #scrolling-box {
@@ -196,6 +202,10 @@ a {
     align-items: center;
     color: white;
 }
+#mainlist img {
+    width: 25vw;
+    height: 20vh;
+}
 
 .header {
     position: fixed;
@@ -235,7 +245,7 @@ a {
 }
 
 .header a {
-    color: white;
+    color: #dc3545;
 }
 
 .footer a {
@@ -252,8 +262,7 @@ a {
 
 .main-a h1 {
     color: white;
-    width: 45%;
-    text-align: center;
+    margin-left: 180px;
 }
 
 .about-p {
@@ -294,4 +303,35 @@ a {
 .main-list img {
     width: 20vw;
     height: 15vh;
+}
+
+.header {
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 50px;
+}
+
+// body > nav > div > div.logo-div > a {
+//   font-family: "Raleway", sans-serif;
+//   font-size: 20;
+// }
+
+.links-div a {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    padding-right: 25%;
+    padding-left: 22%;
+    margin-left: 16%;
+    margin-right: 18%;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    //padding: 100px;
+    margin-top: 4%;
+    flex-direction: column;
 }

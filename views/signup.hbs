@@ -1,22 +1,24 @@
-<form action="/signup" method="POST">
-    <div class="form-group-signup">
-        <h1>SIGNUP</h1>
-        <input type="name" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name">        {{!--
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-    </div>
-    <div class="form-group-signup">
+<div class="signup-form">
+    <form action="/signup" method="POST">
+        <div class="form-group-signup">
+            <h1>Sign Up</h1>
+            <input type="name" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name">            {{!--
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+        </div>
+        <div class="form-group-signup">
 
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group-signup">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group-signup">
 
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        <small id="passwordHelp" class="form-text text-muted">Please enter a password of at least 8 characters.</small>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <small id="passwordHelp" class="form-text text-muted">Please enter a password of at least 8 characters.</small>
 
-    </div>
-    {{#if errorMessage}}
-    <div class="error-message">{{ errorMessage }}</div>
-    {{/if}}
-    <button type="submit" class="button-login">Submit</button>
-</form>
+        </div>
+        {{#if errorMessage}}
+        <div class="error-message">{{ errorMessage }}</div>
+        {{/if}}
+        <button type="submit" class="button-login">Submit</button>
+    </form>
+</div>

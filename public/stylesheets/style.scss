@@ -1,50 +1,50 @@
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway');
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway");
 
 body {
-    font-size: 16px;
-    font-family: 'Raleway', sans-serif;
-    background-image: url('../images/patrick-fore-381200-unsplash.jpg');
-    background-size: 100vw;
-    background-repeat: no-repeat;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  background-image: url("../images/patrick-fore-381200-unsplash.jpg");
+  background-size: 100vw;
+  background-repeat: no-repeat;
 }
 
 #nav-link-header {
-    padding-left: 10%;
+  padding-left: 10%;
 }
 
 .index {
-    width: 45vw;
-    color: white;
-    margin-left: 3%;
+  width: 45vw;
+  color: white;
+  margin-left: 3%;
 }
 
 h1 .index {
-    text-align: center;
+  text-align: center;
 }
 .main-signup {
-    display: flex;
-    justify-content: center;
-    padding: 100px;
-    margin-top: 15%;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+  margin-top: 15%;
+  flex-direction: column;
 }
 
 .main-p {
-    color: white;
-    width: 40vw;
-    text-align: center;
+  color: white;
+  width: 40vw;
+  text-align: center;
 }
 
 a {
-    color: white;
+  color: white;
 }
 .btn btn primary {
-    color: white;
+  color: white;
 }
 
 #btn-mylist {
-    margin: 0;
-    border-radius: 1px solid black;
+  margin: 0;
+  border-radius: 1px solid black;
 }
 // #exampleInputURL {
 //     position: relative;
@@ -52,108 +52,110 @@ a {
 // }
 
 .btn {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    width: 20vw;
-    margin-left: 120px;
-    margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  width: 20vw;
+  margin-left: 120px;
+  margin-top: 50px;
 }
 
 #boom {
-    overflow-y: scroll;
-    height: 480px;
-    width: 63%;
+  overflow-y: scroll;
+  height: 580px;
+  max-width: 66%;
+  margin-left: 0%;
 }
 
 .form-group-login h1 {
-    padding: 20px 0;
-    color: white;
-    margin-top: 30px;
+  padding: 20px 0;
+  color: white;
+  margin-top: 30px;
 }
 
 .form-group-signup h1 {
-    padding: 20px 0;
-    color: white;
-    margin-top: 30px;
+  padding: 20px 0;
+  color: white;
+  margin-top: 30px;
 }
 
 .form-group-login {
-    width: 30vw;
-    margin-top: 80px;
-    margin-left: 50px;
+  width: 30vw;
+  margin-top: 80px;
+  margin-left: 50px;
 }
 
 .form-group-signup h1 {
-    justify-content: center;
-    display: flex;
+  justify-content: center;
+  display: flex;
 }
 
 #submit-form {
-    display: flex;
-    justify-content: center;
-    width: 50vw;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  flex-wrap: wrap;
 }
 
 .button-login {
-    width: 20vw;
-    border: 0;
-    margin: 50px;
-    border-radius: 15px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.8);
-    height: 5vh;
+  width: 20vw;
+  border: 0;
+  margin: 50px;
+  border-radius: 15px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 5vh;
 }
 
 .form-group-signup {
-    width: 30vw;
-    margin-top: 75px;
-    margin-left: 50px;
+  width: 30vw;
+  margin-top: 75px;
+  margin-left: 50px;
 }
 
 .person {
-    width: 20vw;
-    height: 30vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 100px;
+  width: 20vw;
+  height: 30vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 100px;
 }
 
 .main {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 30vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30vh;
 }
 
 .main-careers {
-    display: flex;
-    justify-content: left;
-    margin-top: 30vh;
-    margin-left: 100px;
+  display: flex;
+  justify-content: left;
+  margin-top: 30vh;
+  margin-left: 100px;
 }
 
 .career {
-    width: 40vw;
-    height: 40vh;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50px;
+  width: 40vw;
+  height: 40vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
 }
 #scrolling-box {
-    background-color: rgba(0, 0, 0, 0.8);
-    display: block;
-    width: 800px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: block;
+  width: 800px;
 
-    text-align: center;
+  text-align: center;
 }
 
 #mainlist {
-    width: 60%;
-    height: 10%;
-    background-color: green;
-    display: flex;
-    justify-content: space-around;
+  width: 60%;
+  height: 10%;
+  background-color: green;
+  display: flex;
+  justify-content: space-around;
 }
 
 #myListDiv {
+<<<<<<< HEAD
     background-color: rgba(0, 0, 0, 0.8) !important;
     width: 92%;
     height: 40%;
@@ -164,175 +166,187 @@ a {
     display: flex;
     margin-top: 2.5%;
     margin-right: 0;
+=======
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  width: 92%;
+  height: 40%;
+  border-radius: 2%;
+  max-height: 120px;
+  min-height: 120px;
+  border: 1px solid black;
+  display: flex;
+  margin-top: 2.5%;
+  margin-right: 0;
+>>>>>>> 9e043c2549b78ac273647552a2627915d92cfc8b
 }
 
 #myListSave {
-    width: 60%;
-    height: 40%;
-    border-radius: 2%;
-    // border: 1px solid black;
-    display: flex;
-    margin-top: 10%;
-    margin-left: 3%;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  width: 55%;
+  height: 40%;
+  border-radius: 2%;
+  // border: 1px solid black;
+  display: flex;
+  margin-top: 10%;
+  margin-left: 3%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .myList-google {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .hidden-message {
-    color: white;
+  color: white;
 }
 
 #mylist-submit {
-    width: 100%;
-    border-radius: 2%;
-    display: flex;
-    justify-content: space-around;
+  width: 100%;
+  border-radius: 2%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .header-save h5 {
-    color: white;
+  color: white;
 }
 
 #title-text {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    color: white;
-    min-height: 70px;
-    max-height: 70px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  color: white;
+  min-height: 70px;
+  max-height: 70px;
 }
 
 .article-image a img {
-    width: 150px;
-    height: 100%;
-    border-radius: 5px;
-    border: 1px solid black;
+  width: 150px;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 .delete-button button {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    border-radius: 5px;
-    border: 1px solid black;
-    align-items: center;
-    color: white;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  align-items: center;
+  color: white;
 }
 #mainlist img {
-    width: 25vw;
-    height: 20vh;
+  width: 25vw;
+  height: 20vh;
 }
 
 .header {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    height: 7vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  height: 7vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .form-group-login h1 {
-    text-align: center;
-    justify-content: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .button-login {
-    margin-left: 100px;
+  margin-left: 100px;
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    height: 3vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  height: 3vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header a {
-    color: #dc3545;
+  color: #dc3545;
 }
 
 .footer a {
-    color: white;
+  color: white;
 }
 
 .main-a {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 30vh;
-    margin-left: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30vh;
+  margin-left: 100px;
 }
 
 .main-a h1 {
-    color: white;
-    margin-left: 180px;
+  color: white;
+  margin-left: 180px;
 }
 
 .about-p {
-    color: white;
-    width: 40vw;
-    text-align: center;
+  color: white;
+  width: 40vw;
+  text-align: center;
 }
 
 .main-c {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 30vh;
-    margin-left: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30vh;
+  margin-left: 100px;
 }
 
 .main-c h1 {
-    color: white;
-    margin-left: 180px;
+  color: white;
+  margin-left: 180px;
 }
 
 .career-p {
-    color: white;
-    width: 40vw;
-    text-align: center;
+  color: white;
+  width: 40vw;
+  text-align: center;
 }
 
 .main-list {
-    display: flex;
+  display: flex;
 
-    margin: 0, 30px;
+  margin: 0, 30px;
 }
 
 .main-list h5 {
-    width: 20vw;
+  width: 20vw;
 }
 
 .main-list img {
-    width: 20vw;
-    height: 15vh;
+  width: 20vw;
+  height: 15vh;
 }
 
 .header {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .logo img {
-    height: 50px;
+  height: 50px;
 }
 
 // body > nav > div > div.logo-div > a {
@@ -341,34 +355,69 @@ a {
 // }
 
 .links-div a {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    padding-right: 25%;
-    padding-left: 22%;
-    margin-left: 16%;
-    margin-right: 18%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  padding-right: 25%;
+  padding-left: 22%;
+  margin-left: 16%;
+  margin-right: 18%;
 }
 
 .signup-form {
-    display: flex;
-    justify-content: center;
-    //padding: 100px;
-    margin-top: 4%;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  //padding: 100px;
+  margin-top: 4%;
+  flex-direction: column;
 }
 
 .form-login {
-    position: absolute;
-    top: 14%;
+  position: absolute;
+  top: 14%;
 }
 
 #title-text > a > h5 {
-    max-height: 25px;
-    margin-bottom: 5%;
-    font-family: 'Nanum Gothic', sans-serif;
+  max-height: 25px;
+  margin-bottom: 5%;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 #title-text > p {
-    font-size: 14px;
+  font-size: 14px;
+}
+
+#exampleInputURL {
+  width: 70%;
+}
+
+#\3a 0\2e targetLanguage > select {
+  max-width: 12%;
+  position: absolute;
+  bottom: 16%;
+  right: 1%;
+}
+
+#btn-mylist {
+  background-color: #007bff;
+}
+
+// body > nav > div > div.logo-div > a > img {
+//   font-size: ;
+// }
+
+body > div.main-a > h1 {
+  color: white;
+  margin-left: 180px;
+  position: absolute;
+  bottom: 51%;
+}
+
+body > div.main-a > p {
+  color: white;
+  width: 40vw;
+  text-align: center;
+  position: absolute;
+  bottom: 25%;
+  left: 10%;
 }

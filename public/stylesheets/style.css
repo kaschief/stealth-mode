@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway");
 body {
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
@@ -114,6 +114,7 @@ a {
   border-radius: 50px; }
 
 #scrolling-box {
+  background-color: rgba(0, 0, 0, 0.8);
   display: block;
   width: 800px;
   text-align: center; }
@@ -166,7 +167,9 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
-  color: white; }
+  color: white;
+  min-height: 70px;
+  max-height: 70px; }
 
 .article-image a img {
   width: 150px;
@@ -262,7 +265,7 @@ a {
   display: flex;
   margin: 0, 30px; }
 
-.main-list h4 {
+.main-list h5 {
   width: 20vw; }
 
 .main-list img {
@@ -289,5 +292,17 @@ a {
   justify-content: center;
   margin-top: 4%;
   flex-direction: column; }
+
+.form-login {
+  position: absolute;
+  top: 14%; }
+
+#title-text > a > h5 {
+  max-height: 25px;
+  margin-bottom: 5%;
+  font-family: 'Nanum Gothic', sans-serif; }
+
+#title-text > p {
+  font-size: 14px; }
 
 /*# sourceMappingURL=style.css.map */

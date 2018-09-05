@@ -9,33 +9,34 @@
 // );
 
 $(document).ready(function() {
-  console.log("JQuery is ready!");
+    console.log('JQuery is ready!');
 
-  //when the URL submit button is clicked....
+    //when the URL submit button is clicked....
 
-  $("#submit-form").submit(_ => {
-    console.log("This is working");
+    $('#submit-form').submit(_ => {
+        console.log('This is working');
 
-    //capture the entered text
-    const enteredURL = $("input[name='url']").val();
-    console.log(enteredURL);
+        //capture the entered text
+        const enteredURL = $("input[name='url']").val();
+        console.log(enteredURL);
 
-    let validURL = function(url) {
-      var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-      if (!regex.test(url)) {
-        console.log("Please enter valid URL");
-        return false;
-      } else {
-        return true;
-      }
-    };
+        let validURL = function(url) {
+            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if (!regex.test(url)) {
+                console.log('Please enter valid URL');
+                return false;
+            } else {
+                return true;
+            }
+        };
 
-    let URLTest = validURL(enteredURL);
+        let URLTest = validURL(enteredURL);
 
-    if (URLTest === false) {
-      console.log("FALSE");
-    }
-  });
+        if (URLTest === false) {
+            document.getElementById('hidden-message').text('Test');
+            console.log('FALSE');
+        }
+    });
 });
 
 //function to validate URL

@@ -6,6 +6,9 @@ body {
   background-size: 100vw;
   background-repeat: no-repeat; }
 
+#nav-link-header {
+  padding-left: 10%; }
+
 .index {
   width: 45vw;
   color: white;
@@ -33,12 +36,8 @@ a {
   color: white; }
 
 #btn-mylist {
-  position: relative;
-  left: 50%; }
-
-#exampleInputURL {
-  position: relative;
-  left: 50%; }
+  margin: 0;
+  border-radius: 1px solid black; }
 
 .btn {
   background-color: rgba(0, 0, 0, 0.8);
@@ -115,7 +114,6 @@ a {
   border-radius: 50px; }
 
 #scrolling-box {
-  background-color: rgba(0, 0, 0, 0.8);
   display: block;
   width: 800px;
   text-align: center; }
@@ -128,30 +126,40 @@ a {
   justify-content: space-around; }
 
 #myListDiv {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8) !important;
   width: 92%;
   height: 40%;
-  border-radius: 2px;
+  border-radius: 2%;
   border: 1px solid black;
   display: flex;
   margin-top: 1%;
   margin-right: 0; }
 
 #myListSave {
-  background-color: rgba(0, 0, 0, 0.8);
   width: 60%;
   height: 40%;
-  border-radius: 2px;
-  border: 1px solid black;
+  border-radius: 2%;
   display: flex;
   margin-top: 10%;
   margin-left: 3%;
+  justify-content: space-evenly;
   flex-wrap: wrap; }
 
-.save-url button {
-  margin: 5px;
-  color: white;
-  background-color: black; }
+.myList-google {
+  display: flex;
+  justify-content: space-evenly; }
+
+.hidden-message {
+  color: white; }
+
+#mylist-submit {
+  width: 100%;
+  border-radius: 2%;
+  display: flex;
+  justify-content: space-around; }
+
+.header-save h5 {
+  color: white; }
 
 #title-text {
   display: flex;

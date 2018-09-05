@@ -1,17 +1,12 @@
  {{#if user}}
 <div id="myListSave">
-  <div class="header-save">
-    <h5>Save a URL</h5>
-  </div>
-  <div class="save-url">
-    <form action="/save" method="POST">
-      <div class="form-group">
-        {{!-- <label for="exampleInputURL">URL of Article</label> --}}
-        <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">        {{!--
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-      </div>
-      <button type="submit" id="btn-mylist" class="btn btn-primary">Submit me</button>
-    </form>
+  <form id="mylist-submit" action="/save" method="POST">
+    <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">
+    <button type="submit" id="btn-mylist" class="btn btn-primary">Save Url</button>
+  </form>
+  <div class="myList-google">
+    <div id="google_translate_element"></div>
+    <div class="hidden-message"></div>
   </div>
 </div>
 <ul id="boom">
@@ -37,3 +32,9 @@
   {{/each}}
 </ul>
 {{/if}}
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

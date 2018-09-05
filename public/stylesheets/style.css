@@ -3,8 +3,12 @@ body {
   font-size: 16px;
   font-family: "Raleway", sans-serif;
   background-image: url("../images/patrick-fore-381200-unsplash.jpg");
+<<<<<<< HEAD
   background-size: 100vw;
   background-repeat: no-repeat; }
+=======
+  background-size: cover; }
+>>>>>>> e42e4e93231210b07f4d9ee13b35163b23da6cc6
 
 .index {
   width: 45vw;
@@ -150,7 +154,8 @@ a {
 
 .main-a h1 {
   color: white;
-  margin-left: 180px; }
+  width: 45%;
+  text-align: center; }
 
 .about-p {
   color: white;

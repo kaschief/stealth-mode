@@ -112,7 +112,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
+<<<<<<< HEAD
 app.locals.title = "Welcome to Klipr";
+=======
+
+app.locals.title = 'Express - Generated with IronGenerator';
+>>>>>>> e42e4e93231210b07f4d9ee13b35163b23da6cc6
 
 const index = require("./routes/index");
 app.use("/", index);

@@ -1,10 +1,22 @@
 body {
+<<<<<<< HEAD
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("../images/hitoshi-suzuki-497082-unsplash.jpg");
   background-size: cover;
+=======
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../images/patrick-fore-381200-unsplash.jpg');
+    background-size: cover;
+>>>>>>> 3e2e3c357e58be21f701b6d535ac49e719b42656
 }
 
+.index {
+    width: 60vw;
+    color: white;
+}
 .main-signup {
+<<<<<<< HEAD
   display: flex;
   justify-content: center;
   padding: 150px;
@@ -25,6 +37,55 @@ a {
   width: 30vw;
   margin-top: 150px;
   margin-left: 50px;
+=======
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+.main-p {
+    color: white;
+    width: 40vw;
+    text-align: center;
+}
+
+a {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 20vw;
+    margin-left: 120px;
+    margin-top: 50px;
+}
+
+.form-group-login h1 {
+    padding: 30px 0;
+    color: white;
+    margin-top: 30px;
+}
+
+.form-group-signup h1 {
+    padding: 30px 0;
+    color: white;
+    margin-top: 30px;
+}
+
+.form-group-login {
+    width: 30vw;
+    margin-top: 80px;
+    margin-left: 50px;
+>>>>>>> 3e2e3c357e58be21f701b6d535ac49e719b42656
+}
+
+.form-group-signup h1 {
+    justify-content: center;
+    display: flex;
 }
 
 .button-login {
@@ -38,9 +99,15 @@ a {
 }
 
 .form-group-signup {
+<<<<<<< HEAD
   width: 30vw;
   margin-top: 100px;
   margin-left: 50px;
+=======
+    width: 30vw;
+    margin-top: 75px;
+    margin-left: 50px;
+>>>>>>> 3e2e3c357e58be21f701b6d535ac49e719b42656
 }
 
 .person {
@@ -56,7 +123,15 @@ a {
   margin-top: 30vh;
 }
 
+.main-careers {
+    display: flex;
+    justify-content: left;
+    margin-top: 30vh;
+    margin-left: 100px;
+}
+
 .career {
+<<<<<<< HEAD
   width: 30vw;
   height: 45vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -73,4 +148,108 @@ a {
   color: white;
   text-align: center;
   height: 3vh;
+=======
+    width: 40vw;
+    height: 40vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+}
+
+.header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    height: 7vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-group-login h1 {
+    text-align: center;
+    justify-content: center;
+}
+
+.button-login {
+    margin-left: 100px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    height: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a {
+    color: white;
+}
+
+.footer a {
+    color: white;
+}
+
+.main-a {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30vh;
+    margin-left: 100px;
+}
+
+.main-a h1 {
+    color: white;
+    margin-left: 180px;
+}
+
+.about-p {
+    color: white;
+    width: 40vw;
+    text-align: center;
+}
+
+.main-c {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30vh;
+    margin-left: 100px;
+}
+
+.main-c h1 {
+    color: white;
+    margin-left: 180px;
+}
+
+.career-p {
+    color: white;
+    width: 40vw;
+    text-align: center;
+}
+
+.main-list {
+    display: flex;
+
+    margin: 0, 30px;
+}
+
+.main-list h4 {
+    width: 20vw;
+}
+
+.main-list img {
+    width: 20vw;
+    height: 15vh;
+>>>>>>> 3e2e3c357e58be21f701b6d535ac49e719b42656
 }

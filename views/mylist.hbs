@@ -1,5 +1,4 @@
  {{#if user}}
-
 <div>
   {{!--
   <div class="navbar navbar-dark bg-dark"> --}}
@@ -8,11 +7,8 @@
     <a href="/favorites">Favorites</a>
     <a href="/logout">Logout</a>
   </div>
-
   <h1>My List</h1>
-
   <h5>Save a URL</h5>
-
   <form action="/save" method="POST">
     <div class="form-group">
       <label for="exampleInputURL">URL of Article</label>
@@ -21,10 +17,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
-
   <div>
-
     <ul>
       {{#each articles}}
       <li>
@@ -37,6 +30,4 @@
       {{/each}}
     </ul>
   </div>
-
-
   {{/if}}

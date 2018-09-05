@@ -1,26 +1,39 @@
  {{#if user}}
-<div id="submit-form">
-  <h5>Save a URL</h5>
-  <form action="/save" method="POST">
-    <div class="form-group">
-      <label for="exampleInputURL">URL of Article</label>
-      <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">      {{!--
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+<div id="myListSave">
+  <div class="header-save">
+    <h5>Save a URL</h5>
+  </div>
+  <div class="save-url">
+    <form action="/save" method="POST">
+      <div class="form-group">
+        {{!-- <label for="exampleInputURL">URL of Article</label> --}}
+        <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">        {{!--
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <button type="submit" id="btn-mylist" class="btn btn-primary">Submit me</button>
+    </form>
+  </div>
+</div>
+<ul id="boom">
+  {{#each articles}}
+  <div id="scrolling-box">
+    <div id="myListDiv">
+      <div id="title-text">
+        <a href="{{this.url}}" target="_blank">
+          <h4>{{this.title}}</h4></a>
+        <p>{{this.description}}</p>
+        <div class="delete-button">
+          <form action="/mylist/{{this.id}}/delete" method="POST">
+            <button>Delete</button>
+          </form>
+        </div>
+      </div>
+      <div class="article-image">
+        <a><img src="{{this.image}}"></a>
+      </div>
+
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
-<div id="mainlist">
-  <ul>
-    {{#each articles}}
-    <li>
-      <a href="{{this.url}}" target="_blank"><h4>{{this.title}}</h4><img src="{{this.image}}"></a>
-      <p>{{this.description}}</p>
-      <form action="/mylist/{{this.id}}/delete" method="POST">
-        <button>Delete</button>
-      </form>
-    </li>
-    {{/each}}
-  </ul>
-</div>
+  </div>
+  {{/each}}
+</ul>
 {{/if}}

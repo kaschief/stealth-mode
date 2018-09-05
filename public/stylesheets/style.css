@@ -131,9 +131,11 @@ a {
   width: 92%;
   height: 40%;
   border-radius: 2%;
+  max-height: 120px;
+  min-height: 120px;
   border: 1px solid black;
   display: flex;
-  margin-top: 1%;
+  margin-top: 2.5%;
   margin-right: 0; }
 
 #myListSave {

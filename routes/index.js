@@ -2,12 +2,21 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
+<<<<<<< HEAD
 const passport = require('passport');
 const ensureLogin = require('connect-ensure-login');
 const User = require('../models/User');
 const Article = require('../models/Article');
 const Nightmare = require('nightmare');
 const nightmare = Nightmare();
+=======
+const passport = require("passport");
+const ensureLogin = require("connect-ensure-login");
+const User = require("../models/User");
+const Article = require("../models/Article");
+const request = require("request");
+const cheerio = require("cheerio");
+>>>>>>> ef7ad75da655eefc8e454102eaefad4af697f69f
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -22,7 +31,6 @@ router.get('/login', (req, res, next) => {
 });
 
 //POST to SUBMIT once at the LOGIN page
-
 router.post(
     '/login',
     passport.authenticate('local', {
@@ -42,12 +50,50 @@ router.get('/signup', (req, res, next) => {
 });
 
 //POST to SUBMIT once at the SIGNUP page
+<<<<<<< HEAD
 
 router.post('/signup', (req, res, next) => {
     //captures name, email and password from body
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
+=======
+router.post("/signup", (req, res, next) => {
+  //captures name, email and password from body
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // if name, email or password is blank, then render error
+  if (name === "" || email === "" || password === "") {
+    res.render("signup", {
+      errorMessage: "Please enter name, email and a password for signup"
+    });
+  }
+
+  //check is password length is greater than 8
+  if (password.length < 8) {
+    res.render("signup", {
+      errorMessage: "Please create a password with 8 or more characters"
+    });
+    return;
+  }
+
+  //applies encryption (using salt method) to password - standard, don't change
+
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(password, salt);
+
+  //finally creates new user and add to Model/databse
+  //use Model.create()
+
+  //create new user object with entered name, email and encrypted password
+  const newUserObject = {
+    name: name,
+    email: email,
+    password: hashPass
+  };
+>>>>>>> ef7ad75da655eefc8e454102eaefad4af697f69f
 
     // if name, email or password is blank, then render error
     if (name === '' || email === '' || password === '') {
@@ -106,13 +152,21 @@ router.post('/signup', (req, res, next) => {
 });
 
 //LOGOUT SECTION
+<<<<<<< HEAD
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/login');
+=======
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/login");
+>>>>>>> ef7ad75da655eefc8e454102eaefad4af697f69f
 });
 
 //MYLIST SECTION
 
+<<<<<<< HEAD
 router.get('/mylist', ensureLogin.ensureLoggedIn(), (req, res) => {
     //check user's ID
     let userID = req.user.id;
@@ -128,10 +182,23 @@ router.get('/mylist', ensureLogin.ensureLoggedIn(), (req, res) => {
             res.render('mylist', { user: req.user, articles });
         })
         .catch();
+=======
+router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
+  //check user's ID
+  let userID = req.user.id;
+
+  //display all articles
+  Article.find({ _owner: userID })
+    .then(articles => {
+      res.render("mylist", { user: req.user, articles });
+    })
+    .catch();
+>>>>>>> ef7ad75da655eefc8e454102eaefad4af697f69f
 });
 
 //SAVE ARTICLE SECTION
 
+<<<<<<< HEAD
 router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
     const url = req.body.url;
     const userID = req.user.id;
@@ -208,7 +275,75 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
     //   });
     //   return;
     // }
+=======
+router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
+  const url = req.body.url;
+  const userID = req.user.id;
+
+  request(url, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const $ = cheerio.load(body);
+
+      //find the title in the head, take text, then trim
+      const title = $("head > title").text();
+      // .trim();
+
+      //find the first paragraph then take the text
+      const description = $("p")
+        .first()
+        .text();
+
+      //find a p greater than 100?
+      // $("p").filter(function() {
+      //   return $(this).text().length > 100;
+      // });
+
+      const image = $("img")[0]["attribs"]["src"];
+
+      // create the newArticle Object
+
+      const newArticle = {
+        url: url,
+        title: title,
+        image: image,
+        description: description,
+        _owner: userID
+      };
+
+      //console.log("This is the new article Object", newArticle);
+
+      //Create new Article
+
+      Article.create(newArticle)
+        .then(createdArticle => {
+          console.log(createdArticle, "Article successfully created");
+          res.redirect("/mylist");
+        })
+        .catch(err => {
+          console.log(err, "Sorry, article was not created!");
+        });
+    }
+  });
+>>>>>>> ef7ad75da655eefc8e454102eaefad4af697f69f
 });
+
+//DELETE ARTICLE SECTION
+
+router.post(
+  "/mylist/:id/delete",
+  ensureLogin.ensureLoggedIn(),
+  (req, res, next) => {
+    const id = req.params.id;
+    Article.findByIdAndRemove(id)
+      .then(_ => {
+        console.log("Article was DELETED!");
+        res.redirect("/mylist");
+      })
+      .catch(err => {
+        console.log(err, "Article was NOT deleted.");
+      });
+  }
+);
 
 //FAVORITES SECTION
 router.get('/favorites', (req, res, next) => {

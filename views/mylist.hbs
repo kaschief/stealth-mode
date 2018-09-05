@@ -20,7 +20,7 @@
     <div id="myListDiv">
       <div id="title-text">
         <a href="{{this.url}}" target="_blank">
-          <h4>{{this.title}}</h4></a>
+          <h5>{{this.title}}</h5></a>
         <p>{{this.description}}</p>
         <div class="delete-button">
           <form action="/mylist/{{this.id}}/delete" method="POST">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="article-image">
-        <a><img src="{{this.image}}"></a>
+        <a href="{{this.url}}"><img src="{{this.image}}"></a>
       </div>
 
     </div>

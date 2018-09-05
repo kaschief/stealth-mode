@@ -142,24 +142,27 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
       // .trim();
 
       //find the first paragraph then take the text
-      const description = $("p")
+      const receivedParagraph = $("p")
         .first()
         .text();
 
-      //find a p greater than 100?
-      // const description = $('p').filter(function() {
-      //     return (
-      //         $(this)
-      //             .first()
-      //             .text().length > 100
-      //     );
-      // });
-      // console.log(description);
+      //then trim
+
+      function truncate(str) {
+        let truncated = str;
+        let length = 160;
+
+        if (truncated.length < length) {
+          return truncated;
+        } else {
+          truncated = str.substring(0, length) + "...";
+          return truncated;
+        }
+      }
+
+      const description = truncate(receivedParagraph);
 
       const image = $("img")[0]["attribs"]["src"];
-
-      console.log(`$('img')[0]['attribs']`, $("img")[0]["attribs"]);
-      console.log(`$('img')[0]['attribs']`, $("img")[0]["attribs"]);
 
       // create the newArticle Object
 
@@ -186,51 +189,6 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
     }
   });
 });
-
-// request(url, function(error, response, body) {
-//   if (!error && response.statusCode === 200) {
-//     const $ = cheerio.load(body);
-
-//     //find the title in the head, take text, then trim
-//     const title = $("head > title").text();
-//     // .trim();
-
-//     //find the first paragraph then take the text
-//     const description = $("p")
-//       .first()
-//       .text();
-
-//     //find a p greater than 100?
-//     // $("p").filter(function() {
-//     //   return $(this).text().length > 100;
-//     // });
-
-//     const image = $("img")[0]["attribs"]["src"];
-
-//     // create the newArticle Object
-
-//     const newArticle = {
-//       url: url,
-//       title: title,
-//       image: image,
-//       description: description,
-//       _owner: userID
-//     };
-
-//     //console.log("This is the new article Object", newArticle);
-
-//     //Create new Article
-
-//     Article.create(newArticle)
-//       .then(createdArticle => {
-//         console.log(createdArticle, "Article successfully created");
-//         res.redirect("/mylist");
-//       })
-//       .catch(err => {
-//         console.log(err, "Sorry, article was not created!");
-//       });
-//   }
-// });
 
 //DELETE ARTICLE SECTION
 

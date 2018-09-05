@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway");
 body {
   font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   background-image: url("../images/patrick-fore-381200-unsplash.jpg");
   background-size: 100vw;
   background-repeat: no-repeat; }
@@ -130,18 +130,19 @@ a {
 #myListDiv {
   background-color: rgba(0, 0, 0, 0.8);
   width: 92%;
-  height: 40%;
+  max-height: 120px;
+  min-height: 120px;
   border-radius: 2px;
   border: 1px solid black;
   display: flex;
-  margin-top: 1%;
+  margin-top: 2.5%;
   margin-right: 0; }
 
 #myListSave {
   background-color: rgba(0, 0, 0, 0.8);
   width: 60%;
   height: 40%;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 1px solid black;
   display: flex;
   margin-top: 10%;
@@ -158,7 +159,9 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
-  color: white; }
+  color: white;
+  min-height: 70px;
+  max-height: 70px; }
 
 .article-image a img {
   width: 150px;
@@ -254,7 +257,7 @@ a {
   display: flex;
   margin: 0, 30px; }
 
-.main-list h4 {
+.main-list h5 {
   width: 20vw; }
 
 .main-list img {
@@ -281,5 +284,18 @@ a {
   justify-content: center;
   margin-top: 4%;
   flex-direction: column; }
+
+.form-login {
+  position: absolute;
+  top: 14%; }
+
+#title-text > a > h5 {
+  max-height: 25px;
+  margin-bottom: 5%;
+  font-family: "Nanum Gothic", sans-serif; }
+
+#title-text > p {
+  font-size: 14px;
+  text-overflow: ellipsis; }
 
 /*# sourceMappingURL=style.css.map */

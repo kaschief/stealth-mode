@@ -103,6 +103,7 @@ router.get("/mylist", ensureLogin.ensureLoggedIn(), (req, res) => {
   let userID = req.user.id;
 
   Article.find({ _owner: userID })
+    .sort({ created_at: -1 })
     .then(articles => {
       res.render("mylist", { user: req.user, articles });
     })

@@ -17,9 +17,13 @@
       <div class="logo-div">
         <a class="logo" href="/"> <img src="../images/paperclip.png" alt="">KLIPR</a>
       </div>
+
       <div class="links-div">
+        {{#if isConnected}}
+        <a class="nav-link-header" href="logout">Logout <span class="sr-only">(current)</span></a>
+        {{else}}
         <a id="nav-link-header" href="login">Login <span class="sr-only">(current)</span></a>
-        {{!-- <a class="nav-link-header" href="logout">Logout <span class="sr-only">(current)</span></a> --}}
+        {{/if}}
       </div>
     </div>
   </nav>

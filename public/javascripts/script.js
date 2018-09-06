@@ -1,53 +1,34 @@
-//const axios = require("axios");
-
-// document.addEventListener(
-//   "DOMContentLoaded",
-//   () => {
-//     console.log("ScriptJS Loaded -- ready to manipulate");
-//   },
-//   false
-// );
-
 $(document).ready(function() {
-    console.log('JQuery is ready!');
+  console.log("JQuery is ready!");
 
-    //when the URL submit button is clicked....
+  $("#mylist-submit").submit(e => {
+    console.log("This is working");
 
-    $('#submit-form').submit(_ => {
-        console.log('This is working');
+    const enteredURL = $("#exampleInputURL").val();
 
-        //capture the entered text
-        const enteredURL = $("input[name='url']").val();
-        console.log(enteredURL);
+    // console.log("----------", enteredURL.length);
 
-        let validURL = function(url) {
-            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-            if (!regex.test(url)) {
-                console.log('Please enter valid URL');
-                return false;
-            } else {
-                return true;
-            }
-        };
+    // if (enteredURL.length === undefined) {
+    //   console.log("EMPTY");
+    // }
 
-        let URLTest = validURL(enteredURL);
+    console.log(enteredURL);
 
-        if (URLTest === false) {
-            document.getElementById('hidden-message').text('Test');
-            console.log('FALSE');
-        }
-    });
+    let validURL = function(url) {
+      var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+      if (!regex.test(url)) {
+        console.log("Please enter valid URL");
+        return false;
+      } else {
+        return true;
+      }
+    };
+
+    let URLTest = validURL(enteredURL);
+
+    if (URLTest === false) {
+      e.preventDefault();
+      $("#myListSave > div.alert.alert-danger").toggle();
+    }
+  });
 });
-
-//function to validate URL
-
-// //validate URL
-// let enteredURL = validURL(req.body.url);
-
-// axios
-//   .get(
-//     "https://newsapi.org/v2/top-headlines?country=us&apiKey=3393221cf7ba4f5ab1a873161304c7f3"
-//   )
-//   .then(response => {
-//     console.log(response);
-//   });

@@ -337,4 +337,7 @@ body > div.main-a > p {
   bottom: 25%;
   left: 10%; }
 
+#myListSave > div.alert.alert-danger {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

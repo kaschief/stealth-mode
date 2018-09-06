@@ -73,6 +73,7 @@ router.post("/signup", (req, res, next) => {
         });
         return;
       }
+
       User.create(newUserObject)
         .then(_ => {
           res.redirect("/mylist");
@@ -149,8 +150,7 @@ router.post("/save", ensureLogin.ensureLoggedIn(), (req, res) => {
       };
 
       Article.create(newArticle)
-        .then(createdArticle => {
-          console.log(createdArticle, "Article successfully created");
+        .then(_ => {
           res.redirect("/mylist");
         })
         .catch(err => {

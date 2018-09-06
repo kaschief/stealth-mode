@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Dosis|Raleway");
 body {
   font-size: 16px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-image: url("../images/patrick-fore-381200-unsplash.jpg");
   background-size: 100vw;
   background-repeat: no-repeat; }
@@ -303,7 +303,7 @@ a {
 #title-text > a > h5 {
   max-height: 25px;
   margin-bottom: 5%;
-  font-family: "Dosis", sans-serif; }
+  font-family: 'Dosis', sans-serif; }
 
 #title-text > p {
   font-size: 14px;

@@ -4,8 +4,6 @@ const Article = require("../models/Article");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-//Step 1 = Connect to DB using mongoose
-
 mongoose.Promise = Promise;
 mongoose
   .connect(
@@ -19,11 +17,6 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-//Step 2 = actually create the model i.e. use Model.create()
-
-//Create users and articles together, because articles belong to user and requires their ID
-
-//test user creation for first user
 let name = "Barack Obama";
 let email = "barack@obama.com";
 let password = "barack";

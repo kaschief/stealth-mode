@@ -18,7 +18,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb://localhost/stealth-mode",
+    "mongodb://heroku_r6h6h40k:f9loh4cgs33u22kqgud01ttcf6@ds247852.mlab.com:47852/heroku_r6h6h40k",
     { useNewUrlParser: true }
   )
   .then(x => {

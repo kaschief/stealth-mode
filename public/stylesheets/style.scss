@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Dosis|Raleway");
 
 body {
   font-size: 16px;
@@ -367,11 +367,15 @@ a {
 #title-text > a > h5 {
   max-height: 25px;
   margin-bottom: 5%;
-  font-family: "Nanum Gothic", sans-serif;
+  // font-family: "Nanum Gothic", sans-serif;
+  font-family: "Dosis", sans-serif;
 }
 
 #title-text > p {
   font-size: 14px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #exampleInputURL {

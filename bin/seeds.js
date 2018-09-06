@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const Article = require("../models/Article");
@@ -6,10 +8,7 @@ const bcryptSalt = 10;
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(
-    "mongodb://localhost/stealth-mode",
-    { useMongoClient: true }
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to Mongo!");
   })

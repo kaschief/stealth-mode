@@ -17,8 +17,10 @@
 
         </div>
         {{#if errorMessage}}
-        <div class="error-message">{{ errorMessage }}</div>
+        <div class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
         {{/if}}
-        <button type="submit" class="button-login">Submit</button>
+        <button type="submit" class="button-login-signup">Submit</button>
     </form>
 </div>

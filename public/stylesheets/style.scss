@@ -4,8 +4,10 @@ body {
     font-size: 16px;
     font-family: 'Raleway', sans-serif;
     background-image: url('../images/patrick-fore-381200-unsplash.jpg');
+    background-attachment: fixed;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-position: right;
 }
 
 #navi {
@@ -93,7 +95,7 @@ a {
 }
 
 .form-group-login {
-    width: 30vw;
+    width: 400px;
     margin-top: 80px;
     margin-left: 50px;
 }
@@ -119,9 +121,18 @@ a {
     background-color: rgba(0, 0, 0, 0.8);
     height: 5vh;
 }
+.button-login-signup {
+    width: 20vw;
+    border: 0;
+    margin: 50px;
+    border-radius: 15px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 5vh;
+}
 
 .form-group-signup {
-    width: 30vw;
+    width: 400px;
     margin-top: 75px;
     margin-left: 50px;
 }
@@ -299,7 +310,6 @@ a {
 
 .main-a h1 {
     color: white;
-    margin-left: 180px;
 }
 
 .about-p {
@@ -318,7 +328,6 @@ a {
 
 .main-c h1 {
     color: white;
-    margin-left: 180px;
 }
 
 .career-p {
@@ -428,5 +437,21 @@ body > div.main-a > p {
 }
 
 #myListSave > div.alert.alert-danger {
-  display: none;
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-group-login {
+        width: 80%;
+    }
+    .form-group-signup {
+        width: 70%;
+    }
+    .button-login-signup {
+        width: 50%;
+    }
+}
+
+.white {
+    color: white;
 }

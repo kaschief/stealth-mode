@@ -33,10 +33,15 @@
     <a href="/" class="navbar-brand"><img src="../images/paperclip.png" alt="">Klipr</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarMenu">
+
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">Login<a href="/login" class="nav-link"></a></li>
-        {{!--
-        <li class="nav-item">Login<a href="#" class="nav-link"></a></li> --}}
+        {{#if isConnected}}
+        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+        {{else}}
+        <li class="nav-item"><a href="/logout" class="nav-link">LogIn</a></li>
+        {{/if}}
+
+
       </ul>
     </div>
   </nav>

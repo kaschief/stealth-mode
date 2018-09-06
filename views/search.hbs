@@ -1,0 +1,24 @@
+{{!-- search results --}}
+
+<ul id="boom-search">
+  {{#each theResult}}
+  <div id="scrolling-box">
+    <div id="myListDiv">
+      <div id="title-text">
+        <a href="{{this.url}}" target="_blank">
+          <h5>{{this.title}}</h5></a>
+        <p>{{this.description}}</p>
+        <div class="delete-button">
+          <form action="/mylist/{{this.id}}/delete" method="POST">
+            <button>Delete</button>
+          </form>
+        </div>
+      </div>
+      <div class="article-image">
+        <a href="{{this.url}}"><img src="{{this.image}}"></a>
+      </div>
+
+    </div>
+  </div>
+  {{/each}} {{#if isNoResult}} No articles found {{/if}}
+</ul>

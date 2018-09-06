@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+
+  <link rel="icon" href="/images/favicon.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -35,8 +37,13 @@
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">Login<a href="/login" class="nav-link"></a></li>
-        {{!--
-        <li class="nav-item">Login<a href="#" class="nav-link"></a></li> --}}
+        <form action="/search" method="get">
+          <input type="text" placeholder="search" name="search">
+          <Button>
+            SEARCH
+          </Button>
+          {{!--
+          <li class="nav-item">Login<a href="#" class="nav-link"></a></li> --}}
       </ul>
     </div>
   </nav>

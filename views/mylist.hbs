@@ -3,43 +3,51 @@
   <div class="alert alert-danger">
     <strong>Hmmm!</strong> That URL doesn't look right. Try again.
   </div>
-  {{!--
-  <p id="invalid-url" style="color:red"></p> --}}
   <form id="mylist-submit" action="/save" method="POST">
     <input type="name" name="url" class="form-control" id="exampleInputURL" aria-describedby="nameHelp" placeholder="http://...">
     <button type="submit" id="btn-mylist" class="btn btn-primary">Save Url</button>
   </form>
-  <div class="myList-google">
-    <div class="hidden-message"></div>
-  </div>
 </div>
-<ul id="boom">
-  {{#each articles}}
-  <div id="scrolling-box">
-    <div id="myListDiv">
-      <div id="title-text">
-        <a href="{{this.url}}" target="_blank">
-          <h5>{{this.title}}</h5></a>
-        <p>{{this.description}}</p>
-        <div class="delete-button">
-          <form action="/mylist/{{this.id}}/delete" method="POST">
-            <button>Delete</button>
-          </form>
-        </div>
-      </div>
-      <div class="article-image">
-        <a href="{{this.url}}"><img src="{{this.image}}"></a>
-      </div>
 
+{{!-- search button --}}
+<form action="/search" method="get">
+  <input type="text" placeholder="search" name="search">
+  <Button>
+    SEARCH
+  </Button>
+
+
+  <ul id="boom">
+    {{#each articles}}
+    <div id="scrolling-box">
+      <div id="myListDiv">
+        <div id="title-text">
+          <a href="{{this.url}}" target="_blank">
+            <h5>{{this.title}}</h5></a>
+          <p>{{this.description}}</p>
+          <div class="delete-button">
+            <form action="/mylist/{{this.id}}/delete" method="POST">
+              <button>Delete</button>
+            </form>
+          </div>
+        </div>
+        <div class="article-image">
+          <a href="{{this.url}}"><img src="{{this.image}}"></a>
+        </div>
+
+      </div>
     </div>
-  </div>
-  {{/each}}
-</ul>
-<div id="google_translate_element"></div>
-{{/if}}
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {{/each}}
+  </ul>
+
+
+
+  <div id="google_translate_element"></div>
+
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>{{/if}}

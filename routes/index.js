@@ -10,9 +10,11 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 router.get("/", (req, res, next) => {
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     res.redirect("/mylist");
-  } else res.render("index");
+  } else {
+    res.render("index");
+  }
 });
 
 //LOGIN SECTION
@@ -94,7 +96,7 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 //MYLIST SECTION

@@ -182,13 +182,8 @@ router.post(
 //SEARCH SECTION
 
 router.get("/search", (req, res, next) => {
-  //capture the search term from req.query -- it's located in the query.search because the form's method is "get"
   let searchTerm = req.query.search;
-  // if (searchTerm === "") {
-  //   res.render("search", {
-  //     errorMessage: "Please enter a search term"
-  //   });
-  // }
+
   console.log(searchTerm);
   Article.find({
     $or: [

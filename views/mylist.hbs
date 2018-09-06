@@ -1,4 +1,4 @@
- {{#if user}}
+{{#if user}}
 <div id="myListSave">
   <div class="alert alert-danger">
     <strong>Hmmm!</strong> That URL doesn't look right. Try again.
@@ -8,26 +8,7 @@
     <button type="submit" id="btn-mylist" class="btn btn-primary">Save Url</button>
   </form>
 </div>
-{{!--
-<ul id="boom">
-  {{#each articles}}
-  <div id="scrolling-box">
-    <div id="myListDiv">
-      <div id="title-text">
-        <a href="{{this.url}}" target="_blank">
-          <h5>{{this.title}}</h5></a>
-        <p>{{this.description}}</p>
-        <div class="delete-button">
-          <form action="/mylist/{{this.id}}/delete" method="POST">
-            <button>Delete</button>
-          </form>
-        </div>
 
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</ul> --}}
 
 <div class="container">
   <div class="row">

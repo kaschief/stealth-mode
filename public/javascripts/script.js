@@ -1,23 +1,17 @@
-//const axios = require("axios");
-
-// document.addEventListener(
-//   "DOMContentLoaded",
-//   () => {
-//     console.log("ScriptJS Loaded -- ready to manipulate");
-//   },
-//   false
-// );
-
 $(document).ready(function() {
     console.log('JQuery is ready!');
 
-    //when the URL submit button is clicked....
-
-    $('#submit-form').submit(_ => {
+    $('#mylist-submit').submit(e => {
         console.log('This is working');
 
-        //capture the entered text
-        const enteredURL = $("input[name='url']").val();
+        const enteredURL = $('#exampleInputURL').val();
+
+        // console.log("----------", enteredURL.length);
+
+        // if (enteredURL.length === undefined) {
+        //   console.log("EMPTY");
+        // }
+
         console.log(enteredURL);
 
         let validURL = function(url) {
@@ -33,21 +27,8 @@ $(document).ready(function() {
         let URLTest = validURL(enteredURL);
 
         if (URLTest === false) {
-            document.getElementById('hidden-message').text('Test');
-            console.log('FALSE');
+            e.preventDefault();
+            $('#myListSave > div.alert.alert-danger').toggle();
         }
     });
 });
-
-//function to validate URL
-
-// //validate URL
-// let enteredURL = validURL(req.body.url);
-
-// axios
-//   .get(
-//     "https://newsapi.org/v2/top-headlines?country=us&apiKey=3393221cf7ba4f5ab1a873161304c7f3"
-//   )
-//   .then(response => {
-//     console.log(response);
-//   });

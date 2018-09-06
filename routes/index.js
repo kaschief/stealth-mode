@@ -9,7 +9,6 @@ const Article = require('../models/Article');
 const request = require('request');
 const cheerio = require('cheerio');
 
-/* GET home page */
 router.get('/', (req, res, next) => {
     if (req.isAuthenticated) {
         res.redirect('/mylist');
@@ -18,12 +17,10 @@ router.get('/', (req, res, next) => {
 
 //LOGIN SECTION
 
-/* GET to ARRIVE at the LOGIN page */
 router.get('/login', (req, res, next) => {
     res.render('login', { message: req.flash('error') });
 });
 
-//POST to SUBMIT once at the LOGIN page
 router.post(
     '/login',
     passport.authenticate('local', {
@@ -36,27 +33,22 @@ router.post(
 );
 
 //SIGNUP SECTION
-/* GET to ARRIVE at the SIGNUP page */
 
 router.get('/signup', (req, res, next) => {
     res.render('signup');
 });
 
-//POST to SUBMIT once at the SIGNUP page
 router.post('/signup', (req, res, next) => {
-    //captures name, email and password from body
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
 
-    // if name, email or password is blank, then render error
     if (name === '' || email === '' || password === '') {
         res.render('signup', {
             errorMessage: 'Please enter name, email and a password for signup'
         });
     }
 
-    //check is password length is greater than 8
     if (password.length < 8) {
         res.render('signup', {
             errorMessage: 'Please create a password with 8 or more characters'
@@ -64,22 +56,14 @@ router.post('/signup', (req, res, next) => {
         return;
     }
 
-    //applies encryption (using salt method) to password - standard, don't change
-
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    //finally creates new user and add to Model/databse
-    //use Model.create()
-
-    //create new user object with entered name, email and encrypted password
     const newUserObject = {
         name: name,
         email: email,
         password: hashPass
     };
-
-    // search if email already exists, else render error
 
     User.findOne({ email: email })
         .then(user => {
@@ -90,10 +74,8 @@ router.post('/signup', (req, res, next) => {
                 return;
             }
 
-            // if email does not exist, create new Model
             User.create(newUserObject)
-                .then(createdUser => {
-                    console.log(createdUser, 'User was successfully created');
+                .then(_ => {
                     res.redirect('/mylist');
                 })
                 .catch(err => {
@@ -115,10 +97,8 @@ router.get('/logout', (req, res) => {
 //MYLIST SECTION
 
 router.get('/mylist', ensureLogin.ensureLoggedIn(), (req, res) => {
-    //check user's ID
     let userID = req.user.id;
 
-    //display all articles
     Article.find({ _owner: userID })
         .then(articles => {
             res.render('mylist', { user: req.user, articles });
@@ -135,17 +115,13 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
     request(url, function(error, response, body) {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(body);
+            const title = $('head > title')
+                .text()
+                .trim();
 
-            //find the title in the head, take text, then trim
-            const title = $('head > title').text();
-            // .trim();
-
-            //find the first paragraph then take the text
             const receivedParagraph = $('p')
                 .first()
                 .text();
-
-            //then trim
 
             function truncate(str) {
                 let truncated = str;
@@ -160,10 +136,7 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
             }
 
             const description = truncate(receivedParagraph);
-
             const image = $('img')[0]['attribs']['src'];
-
-            // create the newArticle Object
 
             const newArticle = {
                 url: url,
@@ -173,13 +146,8 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
                 _owner: userID
             };
 
-            //console.log("This is the new article Object", newArticle);
-
-            //Create new Article
-
             Article.create(newArticle)
-                .then(createdArticle => {
-                    console.log(createdArticle, 'Article successfully created');
+                .then(_ => {
                     res.redirect('/mylist');
                 })
                 .catch(err => {
@@ -193,9 +161,9 @@ router.post('/save', ensureLogin.ensureLoggedIn(), (req, res) => {
 
 router.post('/mylist/:id/delete', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     const id = req.params.id;
+
     Article.findByIdAndRemove(id)
         .then(_ => {
-            console.log('Article was DELETED!');
             res.redirect('/mylist');
         })
         .catch(err => {

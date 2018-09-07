@@ -366,7 +366,8 @@ body > div.main-a > p {
   .form-group-signup {
     width: 70%; }
   .button-login-signup {
-    width: 50%; } }
+    width: 50%;
+    margin-left: 21%; } }
 
 .white {
   color: white; }
@@ -387,5 +388,18 @@ body > div.container > div > div > div {
 
 #klipr {
   font-family: "Skranji", cursive; }
+
+body > div.main-signup > div > div.signup-button-div > a > button {
+  margin-left: 13%; }
+
+body > div.signup-form > form > div.alert.alert-danger {
+  max-width: 29%;
+  margin-left: 3%; }
+
+body > form > div.alert.alert-danger {
+  margin-left: 11%; }
+
+#linkedin img {
+  height: 25px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -129,6 +129,7 @@ a {
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
   height: 5vh;
+  // margin-left: 22%;
 }
 
 .form-group-signup {
@@ -444,6 +445,7 @@ body > div.main-a > p {
   }
   .button-login-signup {
     width: 50%;
+    margin-left: 21%;
   }
 }
 
@@ -471,4 +473,21 @@ body > div.container > div > div > div {
 
 #klipr {
   font-family: "Skranji", cursive;
+}
+
+body > div.main-signup > div > div.signup-button-div > a > button {
+  margin-left: 13%;
+}
+
+body > div.signup-form > form > div.alert.alert-danger {
+  max-width: 29%;
+  margin-left: 3%;
+}
+
+body > form > div.alert.alert-danger {
+  margin-left: 11%;
+}
+
+#linkedin img {
+  height: 25px;
 }

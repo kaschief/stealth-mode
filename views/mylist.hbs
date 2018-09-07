@@ -21,7 +21,7 @@
               <a href="{{this.url}}"><img class="img-fluid" src="{{this.image}}"></a>
             </div>
             <div class="col-9 text-center">
-              <h5 class="card-title">{{this.title}}</h5>
+              <h5 class="card-title"><a href="{{this.url}}">{{this.title}}</a></h5>
               <p class="card-text">{{this.description}}</p>
               <form action="/mylist/{{this.id}}/delete" method="POST">
                 <button class="btn btn-primary">Delete</button>
@@ -35,7 +35,8 @@
   </div>
 </div>
 
-<div id="google_translate_element"></div>
+<div id=" google_translate_element">
+</div>
 {{/if}}
 <script type="text/javascript">
   function googleTranslateElementInit() {

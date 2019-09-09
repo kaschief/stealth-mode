@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -11,16 +11,15 @@ const UserSchema = new Schema({
     required: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      "Please fill a valid email address"
+      'Please fill a valid email address'
     ]
   },
   password: {
     type: String,
     required: true
   }
-  //favorites: [{ type: ObjectId, ref: "ArticleModel" }]
 });
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
